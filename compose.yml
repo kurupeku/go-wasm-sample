@@ -1,0 +1,13 @@
+services:
+  builder:
+    container_name: wasm-builder
+    platform: "linux/amd64"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/go/src/app
+    command:
+      - tail
+      - -f
+      - /dev/null
