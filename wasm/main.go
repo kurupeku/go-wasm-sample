@@ -5,16 +5,28 @@ import (
 	"log"
 	"sync"
 	"syscall/js"
+	"wasm_sample/calc"
 	"wasm_sample/scrape"
 )
 
 func main() {
 	ch := make(chan struct{})
-	js.Global().Set("scrapeExec", js.FuncOf(exec))
+
+	exeFn := js.FuncOf(exec)
+	defer exeFn.Release()
+
+	fibFn := js.FuncOf(fib)
+	defer fibFn.Release()
+
+	fibMemFn := js.FuncOf(fibMem)
+	defer fibMemFn.Release()
+
+	js.Global().Set("scrapeExec", exeFn)
+	js.Global().Set("fibonacci", fibFn)
+	js.Global().Set("fibonacciMemorized", fibMemFn)
 	<-ch
 }
 
-//export exec
 func exec(js.Value, []js.Value) interface{} {
 	var wg sync.WaitGroup
 
@@ -26,6 +38,16 @@ func exec(js.Value, []js.Value) interface{} {
 
 	wg.Wait()
 	return stringify(pages)
+}
+
+func fib(_ js.Value, args []js.Value) interface{} {
+	n := args[0].Int()
+	return calc.Fibonacci(n)
+}
+
+func fibMem(_ js.Value, args []js.Value) interface{} {
+	n := args[0].Int()
+	return calc.FibonacciMemorized(n)
 }
 
 func scraping(ps []page, i int, wg *sync.WaitGroup) {
