@@ -9,14 +9,20 @@ func Fibonacci(n int) int {
 }
 
 func FibonacciMemorized(n int) int {
-	cache := map[int]int{}
-	return fibonacci(n, cache)
+	cache := make(map[int]int)
+	return fibonacci(n, &cache)
 }
 
-func fibonacci(n int, c map[int]int) int {
-	if v, ok := c[n]; ok {
+func fibonacci(n int, c *map[int]int) int {
+	if n < 2 {
+		return n
+	}
+
+	cv := *c
+	if v, ok := cv[n]; ok {
 		return v
 	}
 
-	return fibonacci(n-2, c) + fibonacci(n-1, c)
+	cv[n] = fibonacci(n-2, c) + fibonacci(n-1, c)
+	return cv[n]
 }

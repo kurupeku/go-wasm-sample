@@ -41,13 +41,11 @@ func exec(js.Value, []js.Value) interface{} {
 }
 
 func fib(_ js.Value, args []js.Value) interface{} {
-	n := args[0].Int()
-	return calc.Fibonacci(n)
+	return calc.Fibonacci(args[0].Int())
 }
 
 func fibMem(_ js.Value, args []js.Value) interface{} {
-	n := args[0].Int()
-	return calc.FibonacciMemorized(n)
+	return calc.FibonacciMemorized(args[0].Int())
 }
 
 func scraping(ps []page, i int, wg *sync.WaitGroup) {
