@@ -6,6 +6,6 @@ export default {
   preprocess: sveltePreprocess(),
   base: "/go-wasm-sample/",
   build: {
-    outDir: "public",
+    outDir: "dist",
   },
 };
