@@ -11,7 +11,7 @@
     const input = e.target as HTMLInputElement;
     file = input.files[0];
     disabled = !file;
-    base64 = await toBase64(file);
+    if (file) base64 = await toBase64(file);
   }
 
   async function handleSubmit() {

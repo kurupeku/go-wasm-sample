@@ -7,5 +7,3 @@
   <Navbar />
   <Router />
 </main>
-
-<style></style>
