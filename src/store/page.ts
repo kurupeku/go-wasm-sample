@@ -1,3 +1,3 @@
 import { writable } from "svelte/store";
 
-export const page = writable("index");
+export const page = writable("home");

@@ -14,8 +14,8 @@
   <NavUl>
     <NavLi
       class="cursor-pointer"
-      active={$page === "index"}
-      on:click={() => page.set("index")}
+      active={$page === "home"}
+      on:click={() => page.set("home")}
     >
       Home
     </NavLi>

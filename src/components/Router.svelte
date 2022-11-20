@@ -1,6 +1,7 @@
 <script lang="ts">
   import { Breadcrumb, BreadcrumbItem } from "flowbite-svelte";
   import { page } from "../store/page";
+  import Home from "./Home.svelte";
   import Fibonacci from "./Fibonacci.svelte";
   import GrayScale from "./GrayScale.svelte";
 </script>
@@ -16,6 +17,8 @@
       <Fibonacci />
     {:else if $page === "grayscale"}
       <GrayScale />
+    {:else}
+      <Home />
     {/if}
   </div>
 </main>
