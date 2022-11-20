@@ -1,5 +1,5 @@
 interface Window {
-  scrapeExec: () => string;
+  grayScale: (base64: string) => string;
   fibonacci: (n: number) => number;
   fibonacciMemorized: (n: number) => number;
 }

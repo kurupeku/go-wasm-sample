@@ -11,11 +11,11 @@
   export let time = 0;
 </script>
 
-<h2 class="text-xl mb-4">{title}</h2>
+<h2 class="text-xl mb-4 dark:text-gray-200">{title}</h2>
 <Table>
   <TableBody class="divide-y">
     <TableBodyRow>
-      <TableBodyCell>Result</TableBodyCell>
+      <TableBodyCell class="">Result</TableBodyCell>
       <TableBodyCell
         tdClass="px-6 py-4 whitespace-nowrap font-medium text-right"
       >

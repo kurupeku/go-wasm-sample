@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Navbar, NavBrand, NavLi, NavUl } from "flowbite-svelte";
+  import { Navbar, NavBrand, NavLi, NavUl, DarkMode } from "flowbite-svelte";
   import { page } from "../store/page";
 </script>
 
@@ -15,17 +15,28 @@
     <NavLi
       class="cursor-pointer"
       active={$page === "index"}
-      on:click={() => page.set("index")}>Home</NavLi
+      on:click={() => page.set("index")}
     >
+      Home
+    </NavLi>
     <NavLi
       class="cursor-pointer"
       active={$page === "fibonacci"}
-      on:click={() => page.set("fibonacci")}>Fibonacci</NavLi
+      on:click={() => page.set("fibonacci")}
     >
+      Fibonacci
+    </NavLi>
     <NavLi
       class="cursor-pointer"
-      active={$page === "scraping"}
-      on:click={() => page.set("scraping")}>Scraping</NavLi
+      active={$page === "grayscale"}
+      on:click={() => page.set("grayscale")}
     >
+      GrayScale
+    </NavLi>
+    <NavLi class="cursor-pointer">
+      <DarkMode
+        btnClass="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm"
+      />
+    </NavLi>
   </NavUl>
 </Navbar>
