@@ -1,5 +1,5 @@
 services:
-  builder:
+  wasm:
     container_name: wasm-builder
     platform: "linux/amd64"
     build:
@@ -8,6 +8,19 @@ services:
     working_dir: /go/src/app/wasm
     volumes:
       - ./:/go/src/app
+    command:
+      - tail
+      - -f
+      - /dev/null
+  front:
+    container_name: front-builder
+    platform: "linux/amd64"
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./:/app
     command:
       - tail
       - -f
