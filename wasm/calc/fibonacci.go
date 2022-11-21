@@ -5,7 +5,7 @@ func Fibonacci(n int) int {
 		return n
 	}
 
-	return Fibonacci(n-2) + Fibonacci(n-1)
+	return Fibonacci(n-1) + Fibonacci(n-2)
 }
 
 func FibonacciMemorized(n int) int {
@@ -23,6 +23,6 @@ func fibonacci(n int, c *map[int]int) int {
 		return v
 	}
 
-	cv[n] = fibonacci(n-2, c) + fibonacci(n-1, c)
+	cv[n] = fibonacci(n-1, c) + fibonacci(n-2, c)
 	return cv[n]
 }
